@@ -41,9 +41,8 @@ func parse_file(path):
 					if string == "":
 						continue					
 					var key = string
-					var message = tr(string.replacen("\"", ""))
-					if key == message:
-						continue
+					var message = Loc.tr(string.replacen("\"", ""))
+
 					if key.length() <= 5:
 						continue
 					if message != "":
