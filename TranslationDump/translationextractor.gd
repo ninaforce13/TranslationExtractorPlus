@@ -2,14 +2,12 @@ extends Node
 var exclusion_folders = []
 var csv_file = File.new()
 var message_list:Dictionary = {}
-var language = "en"
-func _ready():
-	TranslationServer.set_locale(language)
-	csv_file.open("user://translations.csv", File.WRITE)
-	csv_file.store_string("Key,Translation\n") 
-	parse_directory("res://")
-	add_messages()
-	csv_file.close()	
+var languages = ["en", "de", "eo","es","es_mx","fr","it","ja","ko","pt","zh",]
+var display_lang = ["English", "German", "Esperanto", "Spanish", "Spanish (Mexico)","French","Italian","Japanese","Korean","Portuguese","Chinese (Traditional)"]
+onready var language_options:OptionButton = $PanelContainer/MarginContainer/GridContainer/OptionButton
+func _ready():	
+	for language in display_lang:
+		language_options.add_item(language)
 
 func add_messages():
 	for key in message_list.keys():
@@ -41,8 +39,9 @@ func parse_file(path):
 					if string == "":
 						continue					
 					var key = string
-					var message = Loc.tr(string.replacen("\"", ""))
-
+					var message = tr(string.replacen("\"", ""))
+					if key == message:
+						continue
 					if key.length() <= 5:
 						continue
 					if message != "":
@@ -52,4 +51,17 @@ func parse_file(path):
 											
 	file.close()
 
+func _on_Button_pressed():
+	$FileDialog.popup()		
+
+
+func _on_FileDialog_dir_selected(dir):
+	var language = languages[language_options.selected]
+	TranslationServer.set_locale(language)	
+	csv_file.open(dir+"/translation_extract_"+language+".csv", File.WRITE)
+	csv_file.store_string("Key,Translation\n") 
+	parse_directory("res://")
+	add_messages()
+	csv_file.close()
+	SceneManager.change_scene("res://addons/TranslationDump/TranslationBox.tscn")
 
