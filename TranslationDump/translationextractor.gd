@@ -19,9 +19,9 @@ func _ready():
 func add_messages():
 	for key in message_list.keys():
 		var new_string:String = message_list[key]
-		new_string = new_string.replacen("\n","/!")
+		new_string = "\"" + new_string.replacen("\n","\\n") + "\""
 		message_list[key] = new_string
-		csv_file.store_string(key + "\t" + message_list[key] + "\n")	
+		csv_file.store_string(key + "," + message_list[key] + "\n")	
 
 func _on_Button_pressed():
 	$FileDialog.popup()		
@@ -30,7 +30,7 @@ func _on_FileDialog_dir_selected(dir):
 	var language = languages[language_options.selected]
 	TranslationServer.set_locale(language)	
 	csv_file.open(dir+"/translation_extract_"+language+".csv", File.WRITE)
-	csv_file.store_string("id\t"+language+"\n") 
+	csv_file.store_string("id,"+language+"\n") 
 	var translationset
 	for file in translation_files:
 		translationset = load(file)		
