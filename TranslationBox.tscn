@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/TranslationDump/translationextractor.gd" type="Script" id=1]
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.745098, 0.745098, 0.745098, 1 )
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+custom_constants/margin_right = 200
+custom_constants/margin_top = 200
+custom_constants/margin_left = 200
+custom_constants/margin_bottom = 200
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 1720.0
+margin_bottom = 880.0
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_right = 307.0
+margin_bottom = 60.0
+text = "Language: "
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_left = 311.0
+margin_right = 372.0
+margin_bottom = 60.0
+text = "EN"
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/GridContainer"]
+margin_top = 64.0
+margin_right = 307.0
+margin_bottom = 122.0
+text = "Extract Translations"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+visible = true
+margin_left = 262.0
+margin_top = 121.0
+margin_right = 1710.0
+margin_bottom = 973.0
+window_title = "Open a Directory"
+mode = 2
+access = 2
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/GridContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_FileDialog_dir_selected"]
