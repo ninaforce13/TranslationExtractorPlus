@@ -1,5 +1,5 @@
 # TranslationExtractorPlus
-This tool is intended to extract translated dialog from the game using a pattern for identifying translation IDs found in the project files (typically written as DIALOG_NAME_1 or similar). The extracted CSV file will contain the translation IDs and their respective translations in the language chosen. 
+This tool loads the provided translation files and exports all text keys into a comma delimited CSV file. 
 
 # Requirements
  In order for the translation to work, the project needs to be running so the required objects can be setup. The following is required: 
@@ -35,3 +35,5 @@ This tool is intended to extract translated dialog from the game using a pattern
 
   ![extraction_tutorial](https://github.com/ninaforce13/TranslationExtractorPlus/assets/68625676/3f379211-a91f-464e-bc6d-5e83a18a5570)
 
+# Working with the CSV File
+The file will open fine in a text editor or spreadsheet program. However, for a cleaner looking file that is well formatted I recommend using the ```From Text/CSV``` data import function in Excel (or the equivalent function in any other spreadsheet program) to load the csv file into a fresh spreadsheet. 
