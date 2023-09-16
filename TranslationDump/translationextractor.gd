@@ -2,7 +2,7 @@ extends Node
 var exclusion_folders = []
 var csv_file = File.new()
 var message_list:Dictionary = {}
-var languages = ["en", "de", "eo","es","es_mx","fr","it","ja","ko","pt","zh",]
+var languages = ["en", "de_DE", "eo","es_ES","es_MX","fr_FR","it_IT","ja_JP","ko_KR","pt_BR","zh_CN",]
 var display_lang = ["English", "German", "Esperanto", "Spanish", "Spanish (Mexico)","French","Italian","Japanese","Korean","Portuguese","Chinese (Traditional)"]
 onready var language_options:OptionButton = $PanelContainer/MarginContainer/GridContainer/OptionButton
 var translation_files:Array = ["res://addons/TranslationDump/1.1_demo.csv.tres",
@@ -18,7 +18,6 @@ func _ready():
 
 func add_messages():
 	for key in message_list.keys():
-		var string:String = message_list[key]
 		var new_string:String = message_list[key]
 		new_string = new_string.replacen("\n","/!")
 		message_list[key] = new_string
@@ -31,7 +30,7 @@ func _on_FileDialog_dir_selected(dir):
 	var language = languages[language_options.selected]
 	TranslationServer.set_locale(language)	
 	csv_file.open(dir+"/translation_extract_"+language+".csv", File.WRITE)
-	csv_file.store_string("id,"+language+"\n") 
+	csv_file.store_string("id\t"+language+"\n") 
 	var translationset
 	for file in translation_files:
 		translationset = load(file)		
