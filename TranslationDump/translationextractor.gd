@@ -40,5 +40,5 @@ func _on_FileDialog_dir_selected(dir):
 				message_list[translationset.translations[language].messages[i]] = translationset.translations[language].messages[i+1]
 	add_messages()
 	csv_file.close()
-	SceneManager.change_scene("res://addons/TranslationDump/TranslationBox.tscn")
+	SceneManager.change_scene(SceneManager.current_scene)
 
