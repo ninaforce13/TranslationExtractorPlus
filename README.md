@@ -1,5 +1,5 @@
 # TranslationExtractorPlus
-This tool loads the provided translation files and exports all text keys into a comma delimited CSV file. 
+This tool loads the project's import csv files and exports all text keys into a comma delimited CSV file. 
 
 # Requirements
  In order for the translation to work, the project needs to be running so the required objects can be setup. The following is required: 
@@ -36,4 +36,13 @@ This tool loads the provided translation files and exports all text keys into a 
   ![extraction_tutorial](https://github.com/ninaforce13/TranslationExtractorPlus/assets/68625676/3f379211-a91f-464e-bc6d-5e83a18a5570)
 
 # Working with the CSV File
-The file will open fine in a text editor or spreadsheet program. However, for a cleaner looking file that is well formatted I recommend using the ```From Text/CSV``` data import function in Excel (or the equivalent function in any other spreadsheet program) to load the csv file into a fresh spreadsheet. 
+Opening this file directly in a spreadsheet tool usually results in a lot of special characters being mostly unreadable. Instead I suggest using your spreadsheet tool's data import feature to load the data.
+Here's an example with a Japanese extract opened directly in Excel:
+
+![image](https://github.com/ninaforce13/TranslationExtractorPlus/assets/68625676/17d66f2d-575b-4a17-b9fc-f98611e3cadd)
+
+Now here's what it looks like when using Excel's Data import from Text/CSV:
+
+https://github.com/ninaforce13/TranslationExtractorPlus/assets/68625676/f6cc0536-45b6-461e-bc85-1b9ca84cfe3a
+
+ 
